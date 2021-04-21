@@ -12,7 +12,6 @@ public class WordLadder {
 	private static Queue Q;					// A queue to perform the breadth-first-search.
 
 	public static void main(String [] args) throws IOException {
-		// Loading the dictionary of words into the StringMap T.
 		T = new StringMap();
 		File file = new File("dictionary4");
 		Scanner f = new Scanner(file);
@@ -28,7 +27,6 @@ public class WordLadder {
 		System.out.print("Enter the end word: ");
 		end = kb.nextLine();
 
-		// TODO: Solution to find the shortest set of words that transforms the start word to the end word.
         R = new StringMap();
         Q = new Queue();
         Q.enqueue(new QNode (0 , start));
@@ -42,12 +40,10 @@ public class WordLadder {
                 for (char j = 'a'; j <= 'z'; j++) {
                     sb.setCharAt(i,j);
                     if (T.find(sb.toString()) != null){
-                        //System.out.println(sb.toString()); 
                         if (R.find(sb.toString()) == null){
                             R.insert(sb.toString(), curWord);
                             QNode next = new QNode(cur.getDist() + 1, sb.toString()); 
                             Q.enqueue(next); 
-                            //Q.print();                            
                         }
                     
                     
